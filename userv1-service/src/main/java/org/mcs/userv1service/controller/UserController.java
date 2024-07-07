@@ -18,6 +18,12 @@ public class UserController {
 
     private final UserService userService;
 
+    @PostMapping("/registration")
+    @Operation(summary = "зарегистриовать пользователя")
+    public void registrationUser(@RequestBody UserRequestDto userRequestDto){
+        userService.registrationUser(userRequestDto);
+    }
+
     @GetMapping("/get/{userId}")
     @Operation(summary = "получить пользователя по id")
     public UserResponseDto getUserById(@Parameter(name = "id пользователя") @PathVariable("userId") Long userId) {
@@ -30,11 +36,6 @@ public class UserController {
         return userService.getAllUsersByIds(userIds);
     }
 
-    @PostMapping("/add")
-    @Operation(summary = "создать пользователя")
-    public void createUser(@RequestBody UserRequestDto userRequestDto) {
-        userService.createUser(userRequestDto);
-    }
 
     @PutMapping("/update/{userId}")
     @Operation(summary = "обновить данные о пользователе")
@@ -52,6 +53,11 @@ public class UserController {
     @Operation(summary = "получить продукт по id")
     public ProductResponseDto getProductById(@Parameter(name = "id продукта") @PathVariable("productId") Long productId) {
         return userService.getProductById(productId);
+    }
+
+    @GetMapping("/get/all")
+    public List<UserResponseDto> getAllUsers(){
+        return userService.getAllUsers();
     }
 
 }

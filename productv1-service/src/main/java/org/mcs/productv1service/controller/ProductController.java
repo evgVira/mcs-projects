@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.mcs.productv1service.dto.ProductRequestDto;
 import org.mcs.productv1service.dto.ProductResponseDto;
 import org.mcs.productv1service.service.ProductService;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

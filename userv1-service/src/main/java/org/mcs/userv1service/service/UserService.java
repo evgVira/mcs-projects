@@ -8,15 +8,17 @@ import java.util.List;
 
 public interface UserService {
 
+    void registrationUser(UserRequestDto userRequestDto);
+
     UserResponseDto getUserById(Long userId);
 
     List<UserResponseDto> getAllUsersByIds(List<Long> userIds);
-
-    void createUser(UserRequestDto userRequestDto);
 
     void updateUserById(Long userId, UserRequestDto userRequestDto);
 
     void deleteUserById(Long userId);
 
     ProductResponseDto getProductById(Long productId);
+
+    List<UserResponseDto> getAllUsers();
 }

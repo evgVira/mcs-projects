@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  postgres:
+    container_name: authentication_db
+    image: postgres:15
+    ports:
+      - 127.0.0.1:5437:5432
+    environment:
+      - POSTGRES_DB=auth_db
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
