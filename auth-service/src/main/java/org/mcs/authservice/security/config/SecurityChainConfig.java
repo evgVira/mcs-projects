@@ -25,10 +25,10 @@ public class SecurityChainConfig {
         httpSecurity.apply(jwtAuthenticationConfigurer);
 
         return httpSecurity
-//                .csrf(Customizer.withDefaults())
                 .cors(CorsConfigurer::disable)
-                .authorizeHttpRequests(request -> request.requestMatchers("/token/create", HttpMethod.POST.name()).permitAll()
-                        .requestMatchers("/user/update", HttpMethod.GET.name()).permitAll()
+                .authorizeHttpRequests(request -> request.requestMatchers("/api/v1/auth/token/create", HttpMethod.POST.name()).permitAll()
+                        .requestMatchers("/api/v1/auth/user/update", HttpMethod.GET.name()).permitAll()
+                        .requestMatchers("/api/v1/auth/token/validation", HttpMethod.GET.name()).permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .exceptionHandling(exceptionHandling -> exceptionHandling.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))

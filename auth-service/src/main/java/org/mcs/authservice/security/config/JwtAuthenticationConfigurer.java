@@ -31,19 +31,12 @@ public class JwtAuthenticationConfigurer extends AbstractHttpConfigurer<JwtAuthe
 
     private final UserEntityDetailsService userEntityDetailsService;
 
-    private final AccessTokenFactory accessTokenFactory;
-
-    private final RefreshTokenFactory refreshTokenFactory;
-
-    private final AccessTokenSerializer accessTokenSerializer;
-
-    private final RefreshTokenSerializer refreshTokenSerializer;
 
     @Override
     public void init(HttpSecurity builder) throws Exception {
         var csrfConfigurer = builder.getConfigurer(CsrfConfigurer.class);
         if(csrfConfigurer != null){
-            csrfConfigurer.ignoringRequestMatchers((new AntPathRequestMatcher("/token/create", HttpMethod.POST.name())));
+            csrfConfigurer.ignoringRequestMatchers((new AntPathRequestMatcher("/api/v1/auth/token/create", HttpMethod.POST.name())));
         }
     }
 
